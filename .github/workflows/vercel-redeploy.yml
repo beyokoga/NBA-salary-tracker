@@ -1,0 +1,26 @@
+name: Scheduled Vercel redeploy (data refresh)
+
+# Vercel rebuilds re-run the scraper, so triggering a deploy keeps the
+# salary snapshot + news fresh without any manual step.
+# Requires repo secret: VERCEL_DEPLOY_HOOK (Vercel dashboard -> Project
+# -> Settings -> Deploy Hooks; the hook only exists after the Git repo
+# is connected to the Vercel project).
+
+on:
+  schedule:
+    - cron: "0 18 * * *" # 18:00 UTC = 03:00 JST
+  workflow_dispatch: {}
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel deploy hook
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::error::VERCEL_DEPLOY_HOOK secret is not set"; exit 1
+          fi
+          curl -fsS -X POST "$HOOK"
+          echo "redeploy triggered"
