@@ -1,0 +1,327 @@
+{
+ "season": "2026-27",
+ "lines": {
+  "cap": 164961000,
+  "tax": 200428000,
+  "apron1": 209015000,
+  "apron2": 221686000,
+  "floor": 148465000,
+  "mleNonTax": 15044000,
+  "mleTax": 6064000,
+  "roomMle": 9366000,
+  "bae": 5477000,
+  "twoWay": 678882,
+  "earlyBird": 15235500,
+  "estAvgSalary": 15163000,
+  "max0_6": 41240250,
+  "max7_9": 49488300,
+  "max10": 57736350,
+  "tradeCashLimit": 8495000,
+  "exhibit10Max": 91000,
+  "expandedTpe": 9096000
+ },
+ "history": {
+  "2022-23": {
+   "cap": 123655000,
+   "tax": 150267000,
+   "apron1": 150267000,
+   "apron2": null,
+   "floor": 111290000,
+   "mleNonTax": 10490000,
+   "mleTax": 6392000
+  },
+  "2023-24": {
+   "cap": 136021000,
+   "tax": 165294000,
+   "apron1": 172346000,
+   "apron2": 182525000,
+   "floor": 122419000,
+   "mleNonTax": 12405000,
+   "mleTax": 5000000
+  },
+  "2024-25": {
+   "cap": 140588000,
+   "tax": 170814000,
+   "apron1": 178132000,
+   "apron2": 188931000,
+   "floor": 126529000,
+   "mleNonTax": 12825000,
+   "mleTax": 5168000
+  },
+  "2025-26": {
+   "cap": 154647000,
+   "tax": 187895000,
+   "apron1": 195954000,
+   "apron2": 207824000,
+   "floor": 139182000,
+   "mleNonTax": 14104000,
+   "mleTax": 5685000,
+   "roomMle": 8781000,
+   "bae": 5134000
+  },
+  "2026-27": {
+   "cap": 164961000,
+   "tax": 200428000,
+   "apron1": 209015000,
+   "apron2": 221686000,
+   "floor": 148465000,
+   "mleNonTax": 15044000,
+   "mleTax": 6064000,
+   "roomMle": 9366000,
+   "bae": 5477000,
+   "twoWay": 678882,
+   "earlyBird": 15235500,
+   "estAvgSalary": 15163000,
+   "max0_6": 41240250,
+   "max7_9": 49488300,
+   "max10": 57736350,
+   "tradeCashLimit": 8495000,
+   "exhibit10Max": 91000,
+   "expandedTpe": 9096000
+  }
+ },
+ "allTeams": [
+  {
+   "rank": 1.0,
+   "name": "Golden State Warriors",
+   "slug": "golden-state-warriors",
+   "payroll": 220840000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612744/primary/L/logo.svg",
+   "color": "#1D428A"
+  },
+  {
+   "rank": 2.0,
+   "name": "New York Knicks",
+   "slug": "new-york-knicks",
+   "payroll": 218410000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612752/primary/L/logo.svg",
+   "color": "#006BB6"
+  },
+  {
+   "rank": 3.0,
+   "name": "Denver Nuggets",
+   "slug": "denver-nuggets",
+   "payroll": 218130000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612743/primary/L/logo.svg",
+   "color": "#0E2240"
+  },
+  {
+   "rank": 4.0,
+   "name": "Orlando Magic",
+   "slug": "orlando-magic",
+   "payroll": 217870000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612753/primary/L/logo.svg",
+   "color": "#0077C0"
+  },
+  {
+   "rank": 5.0,
+   "name": "Phoenix Suns",
+   "slug": "phoenix-suns",
+   "payroll": 216230000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612756/primary/L/logo.svg",
+   "color": "#1D1160"
+  },
+  {
+   "rank": 6.0,
+   "name": "Minnesota Timberwolves",
+   "slug": "minnesota-timberwolves",
+   "payroll": 215330000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612750/primary/L/logo.svg",
+   "color": "#0C2340"
+  },
+  {
+   "rank": 7.0,
+   "name": "Oklahoma City Thunder",
+   "slug": "oklahoma-city-thunder",
+   "payroll": 214280000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612760/primary/L/logo.svg",
+   "color": "#007AC1"
+  },
+  {
+   "rank": 8.0,
+   "name": "Cleveland Cavaliers",
+   "slug": "cleveland-cavaliers",
+   "payroll": 208970000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612739/primary/L/logo.svg",
+   "color": "#860038"
+  },
+  {
+   "rank": 9.0,
+   "name": "Philadelphia 76ers",
+   "slug": "philadelphia-76ers",
+   "payroll": 207190000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612755/primary/L/logo.svg",
+   "color": "#006BB6"
+  },
+  {
+   "rank": 10.0,
+   "name": "Miami Heat",
+   "slug": "miami-heat",
+   "payroll": 206620000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612748/primary/L/logo.svg",
+   "color": "#98002E"
+  },
+  {
+   "rank": 11.0,
+   "name": "Indiana Pacers",
+   "slug": "indiana-pacers",
+   "payroll": 206300000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612754/primary/L/logo.svg",
+   "color": "#002D62"
+  },
+  {
+   "rank": 12.0,
+   "name": "Toronto Raptors",
+   "slug": "toronto-raptors",
+   "payroll": 201190000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612761/primary/L/logo.svg",
+   "color": "#CE1141"
+  },
+  {
+   "rank": 13.0,
+   "name": "Los Angeles Lakers",
+   "slug": "los-angeles-lakers",
+   "payroll": 200900000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612747/primary/L/logo.svg",
+   "color": "#552583"
+  },
+  {
+   "rank": 14.0,
+   "name": "Houston Rockets",
+   "slug": "houston-rockets",
+   "payroll": 200410000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612745/primary/L/logo.svg",
+   "color": "#CE1141"
+  },
+  {
+   "rank": 15.0,
+   "name": "Boston Celtics",
+   "slug": "boston-celtics",
+   "payroll": 198720000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612738/primary/L/logo.svg",
+   "color": "#007A33"
+  },
+  {
+   "rank": 16.0,
+   "name": "Atlanta Hawks",
+   "slug": "atlanta-hawks",
+   "payroll": 198650000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612737/primary/L/logo.svg",
+   "color": "#E03A3E"
+  },
+  {
+   "rank": 17.0,
+   "name": "San Antonio Spurs",
+   "slug": "san-antonio-spurs",
+   "payroll": 198280000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612759/primary/L/logo.svg",
+   "color": "#C4CED4"
+  },
+  {
+   "rank": 18.0,
+   "name": "Sacramento Kings",
+   "slug": "sacramento-kings",
+   "payroll": 197280000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612758/primary/L/logo.svg",
+   "color": "#5A2D81"
+  },
+  {
+   "rank": 19.0,
+   "name": "New Orleans Pelicans",
+   "slug": "new-orleans-pelicans",
+   "payroll": 196670000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612740/primary/L/logo.svg",
+   "color": "#0C2340"
+  },
+  {
+   "rank": 20.0,
+   "name": "Detroit Pistons",
+   "slug": "detroit-pistons",
+   "payroll": 194500000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612765/primary/L/logo.svg",
+   "color": "#C8102E"
+  },
+  {
+   "rank": 21.0,
+   "name": "Portland Trail Blazers",
+   "slug": "portland-trail-blazers",
+   "payroll": 192090000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612757/primary/L/logo.svg",
+   "color": "#E03A3E"
+  },
+  {
+   "rank": 22.0,
+   "name": "Washington Wizards",
+   "slug": "washington-wizards",
+   "payroll": 192010000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612764/primary/L/logo.svg",
+   "color": "#002B5C"
+  },
+  {
+   "rank": 23.0,
+   "name": "Milwaukee Bucks",
+   "slug": "milwaukee-bucks",
+   "payroll": 190300000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612749/primary/L/logo.svg",
+   "color": "#00471B"
+  },
+  {
+   "rank": 24.0,
+   "name": "Dallas Mavericks",
+   "slug": "dallas-mavericks",
+   "payroll": 188070000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612742/primary/L/logo.svg",
+   "color": "#00538C"
+  },
+  {
+   "rank": 25.0,
+   "name": "LA Clippers",
+   "slug": "los-angeles-clippers",
+   "payroll": 185360000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612746/primary/L/logo.svg",
+   "color": "#C8102E"
+  },
+  {
+   "rank": 26.0,
+   "name": "Utah Jazz",
+   "slug": "utah-jazz",
+   "payroll": 180520000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612762/primary/L/logo.svg",
+   "color": "#002B5C"
+  },
+  {
+   "rank": 27.0,
+   "name": "Charlotte Hornets",
+   "slug": "charlotte-hornets",
+   "payroll": 174550000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612766/primary/L/logo.svg",
+   "color": "#1D1160"
+  },
+  {
+   "rank": 28.0,
+   "name": "Chicago Bulls",
+   "slug": "chicago-bulls",
+   "payroll": 165770000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612741/primary/L/logo.svg",
+   "color": "#CE1141"
+  },
+  {
+   "rank": 29.0,
+   "name": "Memphis Grizzlies",
+   "slug": "memphis-grizzlies",
+   "payroll": 161790000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612763/primary/L/logo.svg",
+   "color": "#5D76A9"
+  },
+  {
+   "rank": 30.0,
+   "name": "Brooklyn Nets",
+   "slug": "brooklyn-nets",
+   "payroll": 160060000,
+   "logo": "https://cdn.nba.com/logos/nba/1610612751/primary/L/logo.svg",
+   "color": "#000000"
+  }
+ ],
+ "generatedAt": "2026-10-12T04:30:20+00:00",
+ "snapshotDate": "2026-10-11"
+}
