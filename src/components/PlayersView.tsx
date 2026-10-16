@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { allPlayers, league } from "@/lib/data";
 import { cls, dateLabel, money, moneyM, pct } from "@/lib/format";
@@ -38,9 +39,10 @@ const RANK = new Map(allPlayers.map((p, i) => [`${p.team}-${p.id}`, i + 1]));
 
 export function PlayersView() {
   const { t, lang } = useLang();
-  const [q, setQ] = useState("");
+  const params = useSearchParams();
+  const [q, setQ] = useState(() => params.get("q") ?? "");
   const [pos, setPos] = useState("all");
-  const [team, setTeam] = useState("all");
+  const [team, setTeam] = useState(() => params.get("team") ?? "all");
   const [maxOnly, setMaxOnly] = useState(false);
   const [optionOnly, setOptionOnly] = useState(false);
   const [view, setView] = useState<"table" | "age">("table");

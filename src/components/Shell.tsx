@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { league } from "@/lib/data";
 import { cls, dateLabel } from "@/lib/format";
 import { useLang } from "@/i18n";
+import { GlobalSearch, type SearchTarget } from "./GlobalSearch";
 
 export interface ShellTab {
   id: string;
@@ -18,12 +19,14 @@ export function Shell({
   tabs,
   onHome,
   title,
+  onSearchSelect,
 }: {
   children: React.ReactNode;
   tabs?: ShellTab[];
   onHome?: () => void;
   /** current section name shown as the app title in the header */
   title?: string;
+  onSearchSelect?: (target: SearchTarget) => void;
 }) {
   const { t, lang, setLang } = useLang();
   const [open, setOpen] = useState(false);
@@ -70,6 +73,7 @@ export function Shell({
           )}
 
           <div className="ml-auto flex items-center gap-2">
+            {onSearchSelect && <GlobalSearch onSelect={onSearchSelect} />}
             <div className="flex overflow-hidden rounded-lg border border-line">
               {(["ja", "en"] as const).map((l) => (
                 <button

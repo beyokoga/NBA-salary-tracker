@@ -6,6 +6,7 @@ import { freeAgency, league } from "@/lib/data";
 import { useLang } from "@/i18n";
 import type { DictKey } from "@/i18n";
 import { Shell, type ShellTab } from "./Shell";
+import type { SearchTarget } from "./GlobalSearch";
 import { Dashboard } from "./Dashboard";
 import { TeamsView } from "./TeamsView";
 import { CompareView } from "./CompareView";
@@ -97,6 +98,17 @@ export function TabbedSite() {
     return () => mo.disconnect();
   }, [tab, t]);
 
+  const handleSearchSelect = useCallback(
+    (target: SearchTarget) => {
+      if (target.kind === "team") {
+        go("teams", { team: target.slug });
+      } else {
+        go("players", { q: target.player.name, team: target.player.team });
+      }
+    },
+    [go],
+  );
+
   const shellTabs: ShellTab[] = TABS.map((x) => ({
     id: x.id,
     label: t(x.key),
@@ -121,7 +133,7 @@ export function TabbedSite() {
   } else if (tab === "teams") {
     view = <TeamsView onOpenTeam={(slug) => go("teams", { team: slug })} />;
   } else if (tab === "players") {
-    view = <PlayersView />;
+    view = <PlayersView key={`${params.get("q") ?? ""}|${params.get("team") ?? ""}`} />;
   } else if (tab === "tax") {
     view = <TaxLab />;
   } else if (tab === "fa") {
@@ -139,7 +151,7 @@ export function TabbedSite() {
   const currentLabel = tab === "dash" ? undefined : t(TABS.find((x) => x.id === tab)?.key ?? "nav.dashboard");
 
   return (
-    <Shell tabs={shellTabs} onHome={() => go("dash")} title={currentLabel}>
+    <Shell tabs={shellTabs} onHome={() => go("dash")} title={currentLabel} onSearchSelect={handleSearchSelect}>
       <div onClickCapture={intercept}>{view}</div>
     </Shell>
   );
