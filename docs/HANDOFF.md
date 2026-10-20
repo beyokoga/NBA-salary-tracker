@@ -25,19 +25,22 @@ Codex は作業前に `AGENTS.md` とこのファイル、`docs/ROADMAP.md` を�
 7. ニュース
 8. クイズ
 9. キャップ推移
+10. お気に入り（`?tab=favorites`）
 
 ## 2. 現在のGit状態（重要）
 
-GitHub上の `main` と、Arena作業環境のローカル `main` には差分があります。
+2026-10-20、DriveのGit bundleからCodexローカルへの移行が完了しました。
 
-- GitHub `main`: `748b1a2`（毎日03:00 JSTの再デプロイワークフローまで）
-- Arenaローカル `main`: `cdcddb0 feat: add global player/team search` を含む
-- このHANDOFF自体も、移行用コミットとしてローカルに追加される
+- GitHub `origin/main`（直近取得時点）: `748b1a2`
+- ローカル `main`: `3c6f4ed`。`cdcddb0` と `3c6f4ed` を元のコミットIDのまま含む
+- お気に入りの作業ブランチ: `codex/favorites`（cleanなmainの`3c6f4ed`から作成）
+- お気に入り実装はこの変更セットに含まれる。2026-10-20にユーザーから公開URLへの反映指示を受け、GitHub mainへの反映とVercel本番公開を進める
+- npm auditの修正や依存バージョンの変更はこのタスクに含めない
 
 つまり、**Codex Cloud が GitHub から開始する場合、ローカルの未pushコミットを push するまでは最新状態を見られません。**
 Codex側で作業を始める前に、ベースに `cdcddb0` 以降が含まれているか必ず確認してください。含まれていなければ、それは移行未完了です。
 
-未pushの理由はコードの問題ではなく、Arena側の実行環境にGitHub書き込み認証が保持されていないことです。pushには、repo限定の短命なfine-grained PAT（Contents: Read and write。`.github/workflows/` を触る場合は Workflows: Read and write も）か、CodexのGitHub連携による書き込み権限が必要です。PATや秘密情報をrepo内に保存しないでください。
+Arenaで未pushだった理由は書き込み認証の不足でした。Codex側では2026-10-20にGitHubへのpush権限をdry-runで確認済みです。PATや秘密情報をrepo内に保存しないでください。
 
 ## 3. 直近で実装済みの変更: 全体検索
 
@@ -62,6 +65,27 @@ Codex側で作業を始める前に、ベースに `cdcddb0` 以降が含まれ�
   - Playwrightでデスクトップ確認: `Lakers` → チーム詳細、`Stephen Curry` → 選手絞り込み
   - Playwrightで390pxモバイル確認: 検索パネル `LAL` → Lakers詳細
   - 横はみ出しチェック: overflow diff = 0
+
+## 3.1. お気に入り実装とローカル検証（2026-10-20）
+
+- `src/lib/favorites.ts`: `useSyncExternalStore`による小さな共有ストア
+- 保存キー: `nba-salary-tracker:favorites:v1`。保存するのは`teams`と`players`のキー配列のみ
+- チームは`slug`、選手は`teamSlug:player id`の複合キーで識別
+- 現在の同梱データに存在しないキーは一覧表示時に無視し、保存内容を自動削除しない
+- localStorageの読み書きが失敗しても、そのページ内のメモリで操作を継続。保存不可の案内を表示
+- 別タブでの登録・解除はstorageイベントで同期
+- チーム詳細と選手一覧に☆/★ボタン。`aria-pressed`、日英ラベル、キーボード操作に対応
+- 選手の星は行の遷移・展開と干渉しない。全体検索結果の構造は変更していない
+- ドロワーに「お気に入り」タブを追加。チーム・選手を分けて表示し、詳細・選手絞り込みへのリンクと解除操作を用意
+- 未登録時はチーム一覧・選手一覧へのリンクと、ヘッダー検索の案内を表示
+- `node --test tests/favorites.test.mjs`: 8件成功（SSR、保存と復元、複合キー、不正データ、保存拒否、通知、別タブ同期、再購読）
+- `npm run lint`: 成功
+- `npm run build`: 成功（Node.js 24.19.0、TypeScript検査・41ページ生成）
+- ブラウザー確認: 登録、再読み込み後の保持、一覧からの遷移、解除、別タブ同期、日英表示、Enter/Space操作
+- デスクトップと390pxモバイルの一覧、モバイルのチーム詳細・選手一覧で横はみ出し0px。確認操作のconsole errorは0件
+- 保存拒否・不正JSONはストアの自動テストで確認。実機モバイル・本番デプロイの検証は未実施
+- WindowsのTurbopack子プロセス通信エラーが再発したが、旧ローカルサーバー停止と`.next`退避後の通常環境ビルドで成功。退避先はrepo外の`../favorites-runtime/build-before-retry`
+- 確認用URL: http://127.0.0.1:3000/?tab=favorites （ローカルサーバーの現在の稼働は再確認すること）
 
 ## 4. デプロイとデータ更新の仕組み
 
@@ -95,9 +119,9 @@ Codex側で作業を始める前に、ベースに `cdcddb0` 以降が含まれ�
 
 優先順位は `docs/ROADMAP.md` を正とします。現時点のおすすめは次の通りです。
 
-1. 移行コミットをGitHubへpushし、Codexが最新ベースから開始できる状態にする
-2. お気に入り機能（選手・チームをlocalStorageに保存）
-3. トレードマシン Lite（選手を選んでサラリー合計と簡易マッチ判定、エプロン警告）
+1. ユーザー承認済みの全体検索・引き継ぎ・お気に入りをGitHub mainへ反映する
+2. Vercel本番のREADYと https://nba-salary-tracker.vercel.app/?tab=favorites の表示・保存操作を確認する
+3. 次の機能候補はトレードマシン Lite（実装開始はユーザーの指示に従う）
 4. 共有カード画像 / PWA など
 
 ## 8. Codexへの最初の指示例

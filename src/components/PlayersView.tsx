@@ -14,6 +14,8 @@ import { SortableTable, type Column } from "./SortableTable";
 import { downloadCsv } from "@/lib/csv";
 import { PlayerDetailGrid } from "./PlayerDetailGrid";
 import { Scatter } from "./charts/Scatter";
+import { FavoriteButton, FavoritesStorageNotice } from "./FavoriteButton";
+import { playerFavoriteKey } from "@/lib/favorites";
 
 const OPTION_LABEL: Record<OptionKind, DictKey> = {
   expiring: "fa.expiring",
@@ -104,12 +106,15 @@ export function PlayersView() {
       header: t("common.player"),
       sortValue: (p) => p.name,
       render: (p) => (
-        <span className="block max-w-[10rem] sm:max-w-none">
-          <span className="block truncate text-[0.86rem] font-semibold text-chalk">{p.name}</span>
-          <span className="block truncate text-[0.68rem] text-fog">
-            {[p.pos, p.position, p.age !== null ? `${p.age}${lang === "ja" ? "歳" : ""}` : null]
-              .filter(Boolean)
-              .join(" · ")}
+        <span className="flex items-center gap-2">
+          <FavoriteButton kind="players" favoriteKey={playerFavoriteKey(p.teamSlug, p.id)} name={p.name} compact />
+          <span className="block max-w-[10rem] sm:max-w-none">
+            <span className="block truncate text-[0.86rem] font-semibold text-chalk">{p.name}</span>
+            <span className="block truncate text-[0.68rem] text-fog">
+              {[p.pos, p.position, p.age !== null ? `${p.age}${lang === "ja" ? "歳" : ""}` : null]
+                .filter(Boolean)
+                .join(" · ")}
+            </span>
           </span>
         </span>
       ),
@@ -227,6 +232,7 @@ export function PlayersView() {
 
   return (
     <div className="space-y-5">
+      <FavoritesStorageNotice />
       <header className="panel px-4 py-5 sm:px-6">
         <div className="flex flex-wrap items-center gap-2">
           <Badge tone="amber">{league.season}</Badge>

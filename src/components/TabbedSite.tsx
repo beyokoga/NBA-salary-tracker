@@ -17,6 +17,7 @@ import { TaxLab } from "./TaxLab";
 import { FreeAgencyView } from "./FreeAgencyView";
 import { NewsView } from "./NewsView";
 import { CapHistoryView } from "./CapHistoryView";
+import { FavoritesView } from "./FavoritesView";
 import { getTeam } from "@/lib/data";
 
 const TABS: { id: string; key: DictKey }[] = [
@@ -24,6 +25,7 @@ const TABS: { id: string; key: DictKey }[] = [
   { id: "teams", key: "nav.teams" },
   { id: "compare", key: "nav.compare" },
   { id: "players", key: "nav.players" },
+  { id: "favorites", key: "nav.favorites" },
   { id: "tax", key: "nav.tax" },
   { id: "fa", key: "nav.freeAgency" },
   { id: "news", key: "nav.news" },
@@ -134,6 +136,8 @@ export function TabbedSite() {
     view = <TeamsView onOpenTeam={(slug) => go("teams", { team: slug })} />;
   } else if (tab === "players") {
     view = <PlayersView key={`${params.get("q") ?? ""}|${params.get("team") ?? ""}`} />;
+  } else if (tab === "favorites") {
+    view = <FavoritesView />;
   } else if (tab === "tax") {
     view = <TaxLab />;
   } else if (tab === "fa") {

@@ -16,6 +16,7 @@ import { APRON_COLOR } from "./charts/PayrollBars";
 import { PlayerDetailGrid } from "./PlayerDetailGrid";
 import { StatusBadge } from "./TeamsView";
 import { Term } from "./Term";
+import { FavoriteButton, FavoritesStorageNotice } from "./FavoriteButton";
 
 const OPTION_LABEL: Record<OptionKind, DictKey> = {
   expiring: "fa.expiring",
@@ -203,6 +204,7 @@ export function TeamDetail({ team, lg }: { team: Team; lg: LeagueDoc }) {
 
   return (
     <div className="space-y-5">
+      <FavoritesStorageNotice />
       {/* ------------------------------------------------------------ hero */}
       <div className="panel relative overflow-hidden">
         <div
@@ -215,6 +217,9 @@ export function TeamDetail({ team, lg }: { team: Team; lg: LeagueDoc }) {
         <div className="relative flex flex-wrap items-start gap-4 px-4 py-5 sm:px-6 sm:py-6">
           <TeamLogo abbr={team.abbr} size={76} priority className="drop-shadow-[0_6px_18px_rgba(0,0,0,0.6)]" />
           <div className="min-w-0 flex-1">
+            <div className="mb-3">
+              <FavoriteButton kind="teams" favoriteKey={team.slug} name={team.name} />
+            </div>
             <div className="flex flex-wrap items-center gap-2">
               <Badge tone="amber">{team.season}</Badge>
               <span className="chip">
