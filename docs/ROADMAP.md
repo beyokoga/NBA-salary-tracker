@@ -15,20 +15,21 @@
 - [x] ニュースのライブ取得（`/api/news`）と同梱スナップショットへのフォールバック
 - [x] GitHub + Vercel 連携（pushで自動デプロイ）
 - [x] 毎日03:00 JSTの自動再デプロイ（データ鮮度維持）
-- [x] 全体検索（選手・チーム横断検索）※ローカル実装と検証は完了。GitHubへのpush待ち
+- [x] 全体検索（選手・チーム横断検索、GitHub main反映・本番動作確認済み）
 - [x] Codexローカルへの移行（Drive bundleから`cdcddb0`・`3c6f4ed`を復元し、lint/build・起動確認完了）
-- [x] お気に入り（`codex/favorites`で実装・検証、2026-10-20にユーザーから本番反映の指示あり）
+- [x] お気に入り（実装コミット`989365c`、2026-10-20にGitHub main反映・Vercel本番公開・動作確認済み）
   - バージョン付きlocalStorageキー、チームslug・選手teamSlug+id、保存不可時のメモリ保持と案内
   - チーム詳細・選手一覧の登録解除、aria-pressedと日英ラベル、favoritesタブの一覧・空表示・遷移・解除
   - 8件のストアテスト、lint/build、デスクトップ・390px表示、保存復元・別タブ同期・日英・キーボード操作をローカル確認済み
 
+- [x] Arena未pushコミットと引き継ぎ資料を元の履歴のままGitHub mainへ反映
+- [x] 本番お気に入りの登録・保持・解除、390px表示を確認（詳細はHANDOFF）
+
 ## In progress / blocked
 
-- [ ] Arenaローカルの全体検索コミット `cdcddb0` と、この移行ドキュメントをGitHubへpushする
-  - 2026-10-20にユーザーが公開URLへの反映を許可。GitHub mainへ履歴を保って反映する
-  - 完了条件: GitHub `main` に全体検索コミットと移行ドキュメントが含まれ、Vercel本番で検索UIが確認できる
-- [ ] お気に入りをGitHub mainへ反映し、Vercel本番で登録・解除・保存を確認する
-  - ローカル検証は完了。公開反映はユーザー承認済み。npm audit修正は別タスク
+- 機能実装・公開に関するブロッカーなし。次の機能はユーザーの指示待ち
+- Vercel連携の詳細ログ取得はscope権限不足。全ログ監査が必要な場合は別途権限確認が必要
+- npm audit修正は別タスク
 
 ## Next candidates
 

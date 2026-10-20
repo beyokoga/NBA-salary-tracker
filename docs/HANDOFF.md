@@ -31,14 +31,12 @@ Codex は作業前に `AGENTS.md` とこのファイル、`docs/ROADMAP.md` を�
 
 2026-10-20、DriveのGit bundleからCodexローカルへの移行が完了しました。
 
-- GitHub `origin/main`（直近取得時点）: `748b1a2`
-- ローカル `main`: `3c6f4ed`。`cdcddb0` と `3c6f4ed` を元のコミットIDのまま含む
+- GitHub mainとローカルmainにお気に入りの実装コミット`989365c`を反映済み。`cdcddb0` と `3c6f4ed` も元のコミットIDのまま含む
 - お気に入りの作業ブランチ: `codex/favorites`（cleanなmainの`3c6f4ed`から作成）
-- お気に入り実装はこの変更セットに含まれる。2026-10-20にユーザーから公開URLへの反映指示を受け、GitHub mainへの反映とVercel本番公開を進める
+- 2026-10-20にユーザーから公開URLへの反映指示を受け、GitHub mainへのpushとVercel本番公開・画面確認が完了
 - npm auditの修正や依存バージョンの変更はこのタスクに含めない
 
-つまり、**Codex Cloud が GitHub から開始する場合、ローカルの未pushコミットを push するまでは最新状態を見られません。**
-Codex側で作業を始める前に、ベースに `cdcddb0` 以降が含まれているか必ず確認してください。含まれていなければ、それは移行未完了です。
+GitHubから開始しても全体検索とお気に入りを含む状態を取得できます。作業前に`cdcddb0`・`3c6f4ed`・`989365c`の履歴と作業ツリーを確認してください。
 
 Arenaで未pushだった理由は書き込み認証の不足でした。Codex側では2026-10-20にGitHubへのpush権限をdry-runで確認済みです。PATや秘密情報をrepo内に保存しないでください。
 
@@ -87,6 +85,18 @@ Arenaで未pushだった理由は書き込み認証の不足でした。Codex側
 - WindowsのTurbopack子プロセス通信エラーが再発したが、旧ローカルサーバー停止と`.next`退避後の通常環境ビルドで成功。退避先はrepo外の`../favorites-runtime/build-before-retry`
 - 確認用URL: http://127.0.0.1:3000/?tab=favorites （ローカルサーバーの現在の稼働は再確認すること）
 
+### 本番公開の確認（2026-10-20）
+
+- 公開URL: https://nba-salary-tracker.vercel.app/
+- お気に入り: https://nba-salary-tracker.vercel.app/?tab=favorites
+- 実装コミット: `989365c06c65f3764a93e5bb9ddfecdb841dbaa7`
+- 初回本番デプロイ: `dpl_3oZPwwu4sRsKuxueu61hToiCWTmy`、READY、GitHubのVercelチェックもsuccess
+- 本番ドメインのaliasが上記デプロイへ切り替わったことを確認
+- 本番ブラウザーでチーム・選手の登録、一覧、再読み込み後の保持、解除、全体検索と遷移を確認
+- 本番390px表示の横はみ出し0px、確認操作中のconsole error 0件。検証用に追加した2項目はUIから解除済み
+- Vercel連携の詳細ビルドログ・デプロイ一覧はscope権限不足（403）。デプロイ状態・コミット・aliasとGitHubチェック、公開画面を根拠として確認。サーバー側ログ全体の監査は未実施
+- npm audit修正・依存バージョン変更は行っていない
+
 ## 4. デプロイとデータ更新の仕組み
 
 - VercelプロジェクトはGitHub repoに接続済み
@@ -119,10 +129,9 @@ Arenaで未pushだった理由は書き込み認証の不足でした。Codex側
 
 優先順位は `docs/ROADMAP.md` を正とします。現時点のおすすめは次の通りです。
 
-1. ユーザー承認済みの全体検索・引き継ぎ・お気に入りをGitHub mainへ反映する
-2. Vercel本番のREADYと https://nba-salary-tracker.vercel.app/?tab=favorites の表示・保存操作を確認する
-3. 次の機能候補はトレードマシン Lite（実装開始はユーザーの指示に従う）
-4. 共有カード画像 / PWA など
+1. 全体検索・引き継ぎ・お気に入りのGitHub反映と本番確認は完了
+2. 次の機能候補はトレードマシン Lite（実装開始はユーザーの指示に従う）
+3. 共有カード画像 / PWA など
 
 ## 8. Codexへの最初の指示例
 
